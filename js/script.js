@@ -56,9 +56,13 @@ function valuePushInArrayUt(){
     //se length array utente minore di maxNumRand prendo value e lo pusho altrimenti tolgo il click
     if(arrayUtente.length < maxNumRand){
         let inputValue = parseInt(inputHtml.value);
-        arrayUtente.push(inputValue);
+        if(isNaN(inputValue)){
+            alert('solo numeri')
+        }else{
+            arrayUtente.push(inputValue);
         console.log(arrayUtente);
         inputHtml.value = '';
+    }
     }else{
        buttonSend.removeEventListener('click', valuePushInArrayUt); 
     }
@@ -97,6 +101,7 @@ function verify(){
     divResult.appendChild(newGameBtn);
     newGameBtn.addEventListener('click', gameRefresh);
 }
+// funzione x refresh
 function gameRefresh(){
     window.location.reload();
 }
