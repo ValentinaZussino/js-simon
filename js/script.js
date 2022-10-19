@@ -6,13 +6,18 @@
 // * Pensate prima in italiano.
 // * Dividete in piccoli problemi la consegna.
 // * Individuate gli elementi di cui avete bisogno per realizzare il programma.
+// ----------------------------------------
+// ----------------------------------------
 
 // prendo btn play
 const btnPlay = document.getElementById('play');
 // prendo span rand-num
 const spanNumeri = document.getElementById('rand-num');
+// prendo p 
+const question = document.querySelector('p');
 // funzione per generare numeri e farli sparire al timeout
 function playAndHide(){
+    question.innerHTML = '';
     // var per il numero di nm rand
     let maxNumRand = 5;
     // creo un array vuoto dove pushare i 5 num random
@@ -29,13 +34,12 @@ function playAndHide(){
     spanNumeri.innerHTML = numeri;
     // imposto il timeout function di 3 secondi
     const timeOut = setTimeout(numeriHidden, 3000);
-    // la funzione da chiamare al timeout deve far sparire i numeri
-    function numeriHidden(){
-        spanNumeri.innerHTML = '';
-        // chiedo all'utente i num visti inserrendoli in input
-        const question = document.querySelector('p');
-        question.innerHTML = 'Inserisci i numeri che hai visto uno alla volta';
-    }
+}
+// la funzione da chiamare al timeout deve far sparire i numeri
+function numeriHidden(){
+    spanNumeri.innerHTML = '';
+    // chiedo all'utente i num visti inserrendoli in input
+    question.innerHTML = 'Inserisci i numeri che hai visto uno alla volta';
 }
 // on click di play
 btnPlay.addEventListener('click', playAndHide);
