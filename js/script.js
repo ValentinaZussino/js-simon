@@ -19,7 +19,6 @@ while (numeri.length < maxNumRand) {
     if(!numeri.includes(numero)){
         numeri.push(numero);
     }
-    console.log(numero)
 }
 console.log(numeri);
 //stampare i num dell'array nello span
@@ -68,21 +67,21 @@ function verify(){
         if(arrayUtente[i] != numeri[i]){
     //in caso l'utente sbagli anche solo una volta
         perdita = true;
-        // return;
         }
     }
     // creo un p da appendere al div per dichiarare visivamente vittoria o perdita e prendo il div
     const divResult = document.querySelector('div');
-    const pResult = document.createElement('p');
+    const textResult = document.createElement('div');
     // stabilisco cosa succede se perdita true/false
     if(perdita) {
-        pResult.innerHTML = 'hai perso: ' + numeri + ' i numeri erano questi';
-        console.log('non ci siamo');
+        textResult.innerHTML = `
+        <p>Sfortunatamente i numeri da te inseriti sono: ${arrayUtente}</p>
+        <br>
+        <p>Mentre i numeri presentati erano: ${numeri}</p>
+        `;
     } else {
-        pResult.innerHTML = 'hai vinto';
-        console.log('ci siamo');
+        textResult.innerHTML = `<p>Complimenti ottima memoria!</p>`;
     }
-    divResult.appendChild(pResult);
-    console.log(perdita);
+    divResult.appendChild(textResult);
 }
-btnVerify.addEventListener('click', verify)
+btnVerify.addEventListener('click', verify);
