@@ -84,15 +84,22 @@ function verify(){
         }
     }
     // creo un p da appendere al div per dichiarare visivamente vittoria o perdita e prendo il div
-    const divResult = document.querySelector('div');
+    const divResult = document.getElementById('result');
     const textResult = document.createElement('div');
     const newGameBtn = document.createElement('button');
     newGameBtn.innerHTML = 'Refresh'
     // stabilisco cosa succede se perdita true/false
     if(perdita) {
+        const correctUtNumbers = [];
+        for(let i = 0; i < arrayUtente.length; i++){
+            if(arrayUtente[i] == numeri[i]){
+            correctUtNumbers.push(arrayUtente[i]);
+        }
+        }
         textResult.innerHTML = `
         <p>Sfortunatamente i numeri da te inseriti sono: ${arrayUtente}</p>
         <p>Mentre i numeri presentati erano: ${numeri}</p>
+        <p>I numeri che hai ricordato nella corretta sequenza sono: ${correctUtNumbers}</p>
         `;
     } else {
         textResult.innerHTML = `<p>Complimenti ottima memoria!</p>`;

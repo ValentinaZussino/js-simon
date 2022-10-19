@@ -10,16 +10,25 @@
     <title>JsSimon</title>
 </head>
 <body>
-    <button id="play">Gioca</button>
-    <span id="rand-num"></span>
-    <br>
-    <p></p>
-    <input id="answer" type="text">
-    <button id="btn-send">Invia</button>
-    <br><br>
-    <button id="verify">Verifica</button>
-    <div></div>
-    
+    <h1 class="text-capitalize text-center py-5 fw-bold">a million bugs</h1>
+    <div>
+        <!-- play -->
+        <button id="play" class="">Gioca</button>
+        <br>
+        <span id="rand-num"></span>
+        <br>
+        <!-- question and answer -->
+        <p class=""></p>
+        <div class="mb-2">
+            <input id="answer" type="text" class="my-3">
+            <button id="btn-send">Invia</button>
+        </div>
+        <!-- verify -->
+        <button id="verify">Verifica</button>
+        <!-- result -->
+        <div id="result" class="mt-3 text-center"></div>
+    </div>
+
     <!-- js -->
     <script src="./js/script.js"></script>
 </body>
