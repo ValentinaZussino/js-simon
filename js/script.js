@@ -41,7 +41,7 @@ const arrayUtente = [];
 // prendo btn per usare dopo il click
 const buttonSend = document.getElementById('btn-send');
 // prendo campo input 
-const inputHtml = document.getElementById('answer')
+const inputHtml = document.getElementById('answer');
 // creo funzione per pushare il value dentro array utento al click
 function valuePushInArrayUt(){
     //se length array utente minore di maxNumRand prendo value e lo pusho altrimenti tolgo il click
@@ -49,6 +49,7 @@ function valuePushInArrayUt(){
         let inputValue = parseInt(inputHtml.value);
         arrayUtente.push(inputValue);
         console.log(arrayUtente);
+        inputHtml.value = '';
     }else{
        buttonSend.removeEventListener('click', valuePushInArrayUt); 
     }
@@ -56,3 +57,17 @@ function valuePushInArrayUt(){
 buttonSend.addEventListener('click', valuePushInArrayUt);
 
 // devo controllare che i num in arrayUtente siano uguali a quelli in numeri
+// prendo btn verifica
+const btnVerify = document.getElementById('verify');
+// mi faccio funzione per confrontare gli elem dei due array e far vedere quelli giusti all'utente
+function verify(){
+    let arrayUtString = arrayUtente.toString();
+    let arrayNumeriString = numeri.toString();
+    if(arrayUtString == arrayNumeriString){
+        console.log('yes');
+    }else{
+        console.log('no');
+    }
+
+}
+btnVerify.addEventListener('click', verify)
