@@ -61,13 +61,28 @@ buttonSend.addEventListener('click', valuePushInArrayUt);
 const btnVerify = document.getElementById('verify');
 // mi faccio funzione per confrontare gli elem dei due array e far vedere quelli giusti all'utente
 function verify(){
-    let arrayUtString = arrayUtente.toString();
-    let arrayNumeriString = numeri.toString();
-    if(arrayUtString == arrayNumeriString){
-        console.log('yes');
-    }else{
-        console.log('no');
+    // definisco var per perdita/vittoria
+    let perdita = false;
+    // controlla se il numero inserito dall'utente sia lo stesso mostrato in quell'ordine
+    for(let i = 0; i < arrayUtente.length; i++){
+        if(arrayUtente[i] != numeri[i]){
+    //in caso l'utente sbagli anche solo una volta
+        perdita = true;
+        // return;
+        }
     }
-
+    // creo un p da appendere al div per dichiarare visivamente vittoria o perdita e prendo il div
+    const divResult = document.querySelector('div');
+    const pResult = document.createElement('p');
+    // stabilisco cosa succede se perdita true/false
+    if(perdita) {
+        pResult.innerHTML = 'hai perso: ' + numeri + ' i numeri erano questi';
+        console.log('non ci siamo');
+    } else {
+        pResult.innerHTML = 'hai vinto';
+        console.log('ci siamo');
+    }
+    divResult.appendChild(pResult);
+    console.log(perdita);
 }
 btnVerify.addEventListener('click', verify)
