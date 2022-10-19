@@ -7,34 +7,40 @@
 // * Dividete in piccoli problemi la consegna.
 // * Individuate gli elementi di cui avete bisogno per realizzare il programma.
 
-// prendo rand-num
+// prendo btn play
+const btnPlay = document.getElementById('play');
+// prendo span rand-num
 const spanNumeri = document.getElementById('rand-num');
-// var per il numero di nm rand
-let maxNumRand = 5;
-// creo un array vuoto dove pushare i 5 num random
-let numeri = []
-// creo ciclo while che genera i 5 numeri random fino a length < maxNumRand. Pusho i num nell'array se numeri non include numero generato
-while (numeri.length < maxNumRand) {
-    let numero = randomNumber(1, 30);
-    if(!numeri.includes(numero)){
-        numeri.push(numero);
+// funzione per generare numeri e farli sparire al timeout
+function playAndHide(){
+    // var per il numero di nm rand
+    let maxNumRand = 5;
+    // creo un array vuoto dove pushare i 5 num random
+    let numeri = []
+    // creo ciclo while che genera i 5 numeri random fino a length < maxNumRand. Pusho i num nell'array se numeri non include numero generato
+    while (numeri.length < maxNumRand) {
+        let numero = randomNumber(1, 30);
+        if(!numeri.includes(numero)){
+            numeri.push(numero);
+        }
+    }
+    console.log(numeri);
+    //stampare i num dell'array nello span
+    spanNumeri.innerHTML = numeri;
+    // imposto il timeout function di 3 secondi
+    const timeOut = setTimeout(numeriHidden, 3000);
+    // la funzione da chiamare al timeout deve far sparire i numeri
+    function numeriHidden(){
+        spanNumeri.innerHTML = '';
+        // chiedo all'utente i num visti inserrendoli in input
+        const question = document.querySelector('p');
+        question.innerHTML = 'Inserisci i numeri che hai visto uno alla volta';
     }
 }
-console.log(numeri);
-//stampare i num dell'array nello span
-spanNumeri.innerHTML = numeri;
+// on click di play
+btnPlay.addEventListener('click', playAndHide);
 
-// imposto il timeout function di 3 secondi
-const timeOut = setTimeout(numeriHidden, 3000);
-// la funzione da chiamare al timeout deve far sparire i numeri
-function numeriHidden(){
-    spanNumeri.innerHTML = '';
-    // chiedo all'utente i num visti inserrendoli in input
-    const question = document.querySelector('p');
-    question.innerHTML = 'Inserisci i numeri che hai visto uno alla volta';
-}
-
-// al click del bottone invio il valore in un array e far sì che non possa inserire più di 5 volte
+// al click del bottone invia invio il valore in un array e far sì che non possa inserire più di 5 volte
 // quindi creo array vuoto
 const arrayUtente = [];
 // prendo btn per usare dopo il click
@@ -76,7 +82,6 @@ function verify(){
     if(perdita) {
         textResult.innerHTML = `
         <p>Sfortunatamente i numeri da te inseriti sono: ${arrayUtente}</p>
-        <br>
         <p>Mentre i numeri presentati erano: ${numeri}</p>
         `;
     } else {
