@@ -15,13 +15,13 @@ const btnPlay = document.getElementById('play');
 const spanNumeri = document.getElementById('rand-num');
 // prendo p 
 const question = document.querySelector('p');
+// var per il numero di nm rand
+let maxNumRand = 5;
+// creo un array vuoto dove pushare i 5 num random
+let numeri = [];
 // funzione per generare numeri e farli sparire al timeout
 function playAndHide(){
     question.innerHTML = '';
-    // var per il numero di nm rand
-    let maxNumRand = 5;
-    // creo un array vuoto dove pushare i 5 num random
-    let numeri = []
     // creo ciclo while che genera i 5 numeri random fino a length < maxNumRand. Pusho i num nell'array se numeri non include numero generato
     while (numeri.length < maxNumRand) {
         let numero = randomNumber(1, 30);
@@ -82,6 +82,8 @@ function verify(){
     // creo un p da appendere al div per dichiarare visivamente vittoria o perdita e prendo il div
     const divResult = document.querySelector('div');
     const textResult = document.createElement('div');
+    const newGameBtn = document.createElement('button');
+    newGameBtn.innerHTML = 'Refresh'
     // stabilisco cosa succede se perdita true/false
     if(perdita) {
         textResult.innerHTML = `
@@ -92,5 +94,11 @@ function verify(){
         textResult.innerHTML = `<p>Complimenti ottima memoria!</p>`;
     }
     divResult.appendChild(textResult);
+    divResult.appendChild(newGameBtn);
+    newGameBtn.addEventListener('click', gameRefresh);
+}
+function gameRefresh(){
+    window.location.reload();
 }
 btnVerify.addEventListener('click', verify);
+
